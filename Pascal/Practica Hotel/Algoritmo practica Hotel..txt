@@ -1,0 +1,3 @@
+Se crean las variables de precio del primer dia ($1200)
+posteriormente se pregunta cuantos dias se hospedara con lo cual se multriplica la 
+cantidad de dias * $950 - 1 que es el primer dia y se imprime el resultado que es la cantidad a pagar.
