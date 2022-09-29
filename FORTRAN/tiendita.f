@@ -1,4 +1,4 @@
-program tiendita
+        program tiendita
         implicit none
         integer cant, cont, z
         real pre, tot, prea
