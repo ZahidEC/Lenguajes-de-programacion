@@ -1,0 +1,152 @@
+#include <algorithm>
+#include <iostream>
+#define TAM 100
+using namespace std;
+
+int imprimir();
+int  menu(int cant, int A[]);
+void imprimirCadena(int cant, int n[]);
+void imprimeCadena(int cant, int n[]);
+
+int main() {
+  int x;
+  int opt;
+  int n[TAM];
+  x = imprimir();
+  imprimirCadena(x, n);
+  do {
+    x = menu(x, n);
+    imprimeCadena(x, n);
+    cout << "Desea realizar otra operacion" << endl;
+    cout << "1)si.\n2)no.";
+    cin >> opt;
+  } while (opt == 1);
+}
+int imprimir() {
+  int n;
+  do {
+    cout << "Cantidad de elementos a ingresar: ";
+    cin >> n;
+    if (n <= 0)
+      cout << "Opcion no valida" << endl;
+    if (n > TAM)
+      cout << "La cantidad maxima permitida es: " << TAM << " : " << endl;
+  } while (n <= 0 || n > TAM);
+  return n;
+}
+
+int menu(int cant, int A[]) {
+Opciones:
+  int i, k, elem, opc;
+  cout << "1) Eliminar :  " << endl;
+  cout << "2) Modificar :" << endl;
+  cout << "3) Buscar: " << endl;
+  cout << "4) Ordenar: " << endl;
+  cout << "5) Salir: " << endl;
+  cout << "Elija una opcion: ";
+  cin >> opc;
+  switch (opc) {
+  case 2: {
+    cout << "Que elemento desea Modificar: ";
+    cin >> elem;
+    do {
+      cout << "En que posicion desea Modificar: ";
+      cin >> k;
+      if (k > (cant - 1) || k < 0)
+        cout << "Ingrese una posicion valida" << endl;
+    } while (k > (cant - 1) || k < 0);
+    cant++;
+    for (i = cant - 1; i >= k; i--) {
+  
+      if (k == i)
+        A[k] = elem;
+    }
+  } break;
+
+  case 1: {
+    do {
+      cout << "Que posicion desea eliminar";
+      cin >> k;
+      if (k > (cant - 1) || k < 0)
+        cout << "Ingrese una posicion valida" << endl;
+    } while (k > (cant - 1) || k < 0);
+    for (i = k; i < cant; i++) {
+      A[i] = A[i + 1];
+    }
+    cant--;
+  } break;
+
+  case 4: {
+
+    std::cout << "ELija una opcion: \n1)Ordenar de manera "
+                 "asendente.\n2)Ordenar de manera decendente.";
+    cin >> opc;
+    int tamano = sizeof A[0];
+    int log = sizeof A / tamano;
+
+    if (opc == 1) {
+      sort(A, A + cant);
+      cout << "Datos ordenados: ";
+
+    } else {
+      sort(A, A - cant);
+      cout << "Datos ordenados: ";
+    }
+  } break;
+
+  case 3: {
+
+    cout << "Ingrese el elemento a buscar: ";
+    cin >> elem;
+    for (i = 0; i < cant; i++) {
+      if (A[i] == elem) {
+        cout << "El elemento buscado se encuentra en la posicion: [" << i + 1
+             << "]" << endl;
+
+      } else {
+        if (i == cant - 1) {
+          cout << "No se encuetra el elemento solicitado" << endl;
+        }
+      }
+    }
+
+  } break;
+    case 5:{
+    cout << "Adios..";
+    }break;
+  default:
+    system("cls");
+    cout << "No existe esa opcion, vuelva a intentar: " << endl;
+    if(opc!=5){
+    goto Opciones;
+      }
+    break;
+  }
+
+  return cant;
+}
+
+void imprimirCadena(int cant, int n[]) {
+  int i;
+  for (i = 0; i < cant; i++) {
+    cout << "Ingresa elemento: " << i + 1 << ": ";
+    cin >> n[i];
+  }
+}
+
+void imprimeCadena(int cant, int n[]) {
+  int i,x;
+    cout <<"[ ";
+  for (i = 0; i < cant; i++) {
+    
+    if(n[x] == 0){
+    for (i = 0; i < cant-1; i++) {
+    cout << n[i] << " ";
+  }
+      }else{
+    cout << n[i] << " ";
+  }
+    }
+  cout << "]" << endl;
+    }
+  
