@@ -1,47 +1,60 @@
         program poliza
-        
         implicit none
-        integer  tipo, edad, bebe, lentes, enfermo, salir
-        real costo, costom, costot, op1, op2,op3,op4, op5
+        integer tipo, edad
+        character(2) bebedor, ciego, enfermo
+        real costo1, costo2, costo3, costo4, costo5, costoTot
+        
+        write(*,*) 'Tipo de Poliza 1 y 2?'
+        print *
         read(*,*) tipo
-             print *
-             print *, 'tipo de poliza 1=A y 2 =B ', tipo
-        read(*,*)  bebe
-             print *, 'La persona bebe alcohol 1= si y 0=no   ',
-        read(*,*)  lentes
-             print *, 'La persona usa lentes 1=si y 0=no  ',
-        read(*,*)  enfermo
-             print *, 'La persona padece alguna enfermedad 1=si y 0=no  ',
-        read(*,*)  edad
-             print *, 'Edad de la persona ',
-        if ( tipo == 1) then
-           costo = 1200
+        
+        if (tipo==1) then
+              costo1=1200
+        else if (tipo==2) then
+             costo1=950
         else
-           costo= 950
+             print *, 'Solo hay poliza 1 y 2'
         end if
         
-        if(lentes == 1) then
-           costot = (0.05)*costo;
+        write(*,*) 'La persona bebe alcohol, si or no?'
+        print *
+        read(*,*) bebedor
+        write(*,*) 'La persona usa lentes, si or no?'
+        print *
+        read(*,*) ciegp
+        write(*,*) 'La persona padece alguna enfermedad, si or no?'
+        print *
+        read(*,*) enfermo
+        write(*,*) 'Cual es la edad de la persona?'
+        print *
+        read(*,*) edad
+        
+        if (bebedor=='si') then
+              costo2=costo1*0.10
+        else
+              costo2=0
+        end if
+        !!!!!!!!!!
+        if (ciego=='si') then
+              costo3=costo1*0.05
+        else
+              costo3=0
         end if
         
-        if(bebe == 1) then
-           op1 = (0.10)*costo
+        if (enfermo=='si') then
+              costo4=costo1*0.05
+        else
+              costo4=0
         end if
-        
-        if (enfermo==1) then
-           op2=(0.05)*costo
+
+        if (edad>40) then
+              costo5=costo1*0.20
+        else
+              costo5=costo1*0.10
         end if
+        costoTot = costo1+costo2+costo3+costo4+costo5
+        print *, 'El costo total es: ',costoTot
+        pause
         
-        if (edad>=40) then
-           op3 = (0.20)*costo
-        end if
-        
-        if (edad<40) then
-           op4 = (0.10)*costo)
-        end if
-        
-        costoa = costo+op1+op2+op3+op4
-        
-        print *, costoa
         
         end program poliza
